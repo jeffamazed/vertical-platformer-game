@@ -156,7 +156,7 @@ function animate() {
 		player.velocity.x = -2;
 		player.lastDirection = "left";
 		player.shouldPanCameraToTheRight({ canvas, camera});
-	} else if (player.velocity.y === 0 ) {
+	}	else if (player.velocity.y === 0 ) {
 			if (player.lastDirection === "right") player.switchSprite("Idle");
 			else player.switchSprite("IdleLeft");
 	} 
@@ -189,7 +189,7 @@ window.addEventListener("keydown", (e) => {
 			keys.a.pressed = true;
 			break;
 		case "s":
-			player.dropThroughPlatform = true;
+			player.isOnPlatform = true;
 			break;
 		case "w":
 			player.velocity.y = -3.7;
@@ -207,8 +207,9 @@ window.addEventListener("keyup", (e) => {
 			break;
 		case "s":
 			setTimeout(() => {
-				player.dropThroughPlatform = false;
+				player.isOnPlatform = false;
 			}, 100);
+			break;
   }
 });
 
