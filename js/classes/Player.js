@@ -46,7 +46,7 @@ class Player extends Sprite {
 			height: 80
 		};
 
-		this.dropThroughPlatform = false;
+		this.isOnPlatform = false;
 	}
 
 	switchSprite(key) {
@@ -89,7 +89,7 @@ class Player extends Sprite {
 		this.applyGravity();
 		this.updateHitbox();
 		this.checkForFloorVerticalCollisions();
-		if (!this.dropThroughPlatform) this.checkForPlatformVerticalCollisions();
+		this.checkForPlatformVerticalCollisions();
 	}
 
 	updateCamerabox() {
@@ -173,7 +173,7 @@ class Player extends Sprite {
 
 					const offset = this.hitbox.position.x - this.position.x + this.hitbox.width;
 
-					this.position.y = collisionBlock.position.x - offset - 0.01;
+					this.position.x = collisionBlock.position.x - offset - 0.01;
 					break;
 				}
 				
@@ -229,12 +229,13 @@ class Player extends Sprite {
 			if (platformCollision({
 				obj1: this.hitbox,
 				obj2: platformCollisionBlock
-			})) {
+			}) && !this.isOnPlatform) {
 				if (this.velocity.y > 0) {
 					this.velocity.y = 0;
 
 					const offset = this.hitbox.position.y - this.position.y + this.hitbox.height;
 					this.position.y = platformCollisionBlock.position.y - offset - 0.01;
+
 					break;
 				}
 			}
