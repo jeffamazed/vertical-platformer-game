@@ -216,12 +216,12 @@ window.addEventListener("keyup", (e) => {
 // Key HTML
 
 startBtn.addEventListener("click", () => {
-	startPage.classList.add("hidden");
+	
 	gamePage.classList.remove("hidden");
 });
 
 backBtn.addEventListener("click", () => {
-	startPage.classList.remove("hidden");
+	
 	gamePage.classList.add("hidden");
 
 	window.location.reload();
