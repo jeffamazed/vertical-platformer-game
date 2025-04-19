@@ -51,7 +51,7 @@ body {
 	background-color: var(--box-color);
 	border: 3px solid black;
 	padding: 20px;
-	animation: fadeIn 0.8s ease-out;
+	transition: opacity 0.5s ease;
 }
 
 h1 {
@@ -126,13 +126,4 @@ p {
 .visible {
 	opacity: 1;
 	pointer-events: auto;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
