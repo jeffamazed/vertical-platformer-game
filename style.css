@@ -51,7 +51,6 @@ body {
 	background-color: var(--box-color);
 	border: 3px solid black;
 	padding: 20px;
-	transition: opacity 0.5s ease;
 }
 
 h1 {
