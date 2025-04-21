@@ -22,7 +22,11 @@ A retro-inspired vertical platformer game built with JavaScript and HTML5 Canvas
 1. Clone or download the repo.
 2. Open `index.html` in your browser.
 
-```bash
-git clone https://github.com/your-username/vertical-platformer.git
-cd vertical-platformer
-open index.html
+
+## Music License
+
+The background music is from [Pixabay Music](https://pixabay.com/music/), **free for personal and commercial use**, and **no attribution required**.
+
+## License
+
+Open-source under the MIT License.
