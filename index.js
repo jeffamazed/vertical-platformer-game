@@ -3,6 +3,10 @@ const startPage = document.getElementById("start-page");
 const startBtn = document.getElementById("start-btn");
 const gamePage = document.getElementById("game-page");
 const backBtn = document.getElementById("back-btn");
+const bgm = new Audio("./audio/background-music.mp3")
+bgm.loop = true;
+bgm.volume = 0.6;
+
 const ctx = canvas.getContext("2d");
 canvas.width = 1024;
 canvas.height = 576;
@@ -221,6 +225,8 @@ startBtn.addEventListener("click", () => {
 
 	window.addEventListener("keydown", handleKeyDown);
 	window.addEventListener("keyup", handleKeyUp);
+
+	bgm.play();
 });
 
 backBtn.addEventListener("click", () => {
@@ -230,6 +236,11 @@ backBtn.addEventListener("click", () => {
 	window.removeEventListener("keydown", handleKeyDown);
 	window.removeEventListener("keyup", handleKeyUp);
 
+	// bgm
+	bgm.pause();
+	bgm.currentTime = 0;
+
+	// player reset
 	keys.d.pressed = false;
 	keys.a.pressed = false;
 	player.velocity.x = 0;
