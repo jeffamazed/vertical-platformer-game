@@ -54,7 +54,7 @@ platformCollisions2D.forEach((row, y) => {
 const player = new Player({
 	position: {
 		x: 100,
-		y: 300
+		y: 320
 	},
 	collisionBlocks,
 	platformCollisionBlocks,
@@ -180,7 +180,7 @@ animate();
 
 // Key Game
 
-window.addEventListener("keydown", (e) => {
+function handleKeyDown(e) {
 	switch (e.key) {
 		case "d":
 			keys.d.pressed = true;
@@ -195,9 +195,9 @@ window.addEventListener("keydown", (e) => {
 			player.velocity.y = -3.7;
 			break;
   }
-});
+}
 
-window.addEventListener("keyup", (e) => {
+function handleKeyUp(e) {
 	switch (e.key) {
 		case "d":
 			keys.d.pressed = false;
@@ -211,22 +211,41 @@ window.addEventListener("keyup", (e) => {
 			}, 100);
 			break;
   }
-});
+}
 
 // Key HTML
 
 startBtn.addEventListener("click", () => {
 	startPage.classList.add("hidden");
 	gamePage.classList.remove("hidden");
+
+	window.addEventListener("keydown", handleKeyDown);
+	window.addEventListener("keyup", handleKeyUp);
 });
 
 backBtn.addEventListener("click", () => {
 	startPage.classList.remove("hidden");
 	gamePage.classList.add("hidden");
 
-	window.location.reload();
-});
+	window.removeEventListener("keydown", handleKeyDown);
+	window.removeEventListener("keyup", handleKeyUp);
 
+	keys.d.pressed = false;
+	keys.a.pressed = false;
+	player.velocity.x = 0;
+
+	setTimeout(() => {
+		player.position = {
+			x: 100,
+			y: 320
+		};
+
+		camera.position = {
+			x: 0,
+			y: -backgroundImageHeight + scaledCanvas.height
+		};
+	}, 200);
+});
 
 
 
