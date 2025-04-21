@@ -35,3 +35,9 @@ git clone https://github.com/your-username/vertical-platformer.git
 cd vertical-platformer
 open index.html
 
+🎵 Music License
+All background music used in this project is from Pixabay Music and is free for personal and commercial use under the Pixabay Content License. No attribution required.
+
+⚠️ Disclaimer
+This game is still in active development. Bugs may appear. If your warrior walks into the void—consider it a feature.
+
