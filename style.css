@@ -51,6 +51,7 @@ body {
 	background-color: var(--box-color);
 	border: 3px solid black;
 	padding: 20px;
+	transition: opacity 0.3s ease;
 }
 
 h1 {
@@ -88,7 +89,7 @@ p {
 .game-page {
 	position: absolute;
 	display: flex;
-	transition: opacity 0.5s ease;
+	transition: opacity 0.3s ease;
 }
 
 .canvas {
