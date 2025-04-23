@@ -117,6 +117,8 @@ const keys = {
 	}
 };
 
+let lastKey = "";
+
 const background = new Sprite({
 	position: {
 		x: 0,
@@ -150,12 +152,12 @@ function animate() {
 	player.update();
 	
 	player.velocity.x = 0;
-	if (keys.d.pressed) {
+	if (keys.d.pressed && lastKey === "d") {
 		player.switchSprite("Run");
 		player.velocity.x = 2;
 		player.lastDirection = "right";
 		player.shouldPanCameraToTheLeft({ canvas, camera });
-	} else if (keys.a.pressed) {
+	} else if (keys.a.pressed && lastKey === "a") {
 		player.switchSprite("RunLeft");
 		player.velocity.x = -2;
 		player.lastDirection = "left";
@@ -188,9 +190,11 @@ function handleKeyDown(e) {
 	switch (e.key) {
 		case "d":
 			keys.d.pressed = true;
+			lastKey = "d";
 			break;
 		case "a":
 			keys.a.pressed = true;
+			lastKey = "a";
 			break;
 		case "s":
 			player.isOnPlatform = true;
