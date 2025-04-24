@@ -47,6 +47,7 @@ class Player extends Sprite {
 		};
 
 		this.isOnPlatform = false;
+		this.isOnAir = true;
 	}
 
 	switchSprite(key) {
@@ -207,6 +208,7 @@ class Player extends Sprite {
 
 					const offset = this.hitbox.position.y - this.position.y + this.hitbox.height;
 					this.position.y = collisionBlock.position.y - offset - 0.01;
+					this.isOnGround = true;
 					break;
 				}
 				
@@ -229,10 +231,11 @@ class Player extends Sprite {
 			if (platformCollision({
 				obj1: this.hitbox,
 				obj2: platformCollisionBlock
-			}) && !this.isOnPlatform) {
+			}) && this.isOnAir) {
 				if (this.velocity.y > 0) {
 					this.velocity.y = 0;
-
+					this.isOnGround = true;
+					
 					const offset = this.hitbox.position.y - this.position.y + this.hitbox.height;
 					this.position.y = platformCollisionBlock.position.y - offset - 0.01;
 
